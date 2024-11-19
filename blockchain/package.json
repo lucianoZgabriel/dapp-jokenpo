@@ -9,7 +9,9 @@
   "scripts": {
     "test": "npx hardhat test",
     "start": "npx hardhat node",
-    "compile": "npx hardhat compile"
+    "compile": "npx hardhat compile",
+    "deploy": "hardhat ignition deploy ignition/modules/JoKenPo.ts",
+    "deploy:sepolia": "hardhat ignition deploy ignition/modules/JoKenPo.ts --network sepolia"
   },
   "keywords": [],
   "author": "",
