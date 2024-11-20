@@ -1,13 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { login } from "./Web3Service";
 
 function Login() {
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("account")) {
+      onLogin(localStorage.getItem("isAdmin") === "true");
+    }
+  }, []);
+
+  function onLogin(isAdmin: boolean) {
+    if (isAdmin) navigate("/admin");
+    else navigate("/app");
+  }
 
   function onButtonClick() {
     setMessage("Logging in...");
     login()
-      .then((response) => alert(JSON.stringify(response)))
+      .then((response) => onLogin(response.isAdmin))
       .catch((err) => setMessage(err.message));
   }
 
