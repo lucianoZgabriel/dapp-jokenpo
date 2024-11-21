@@ -42,3 +42,56 @@ export async function login(): Promise<LoginResponse> {
     isAdmin: normalizedOwner === normalizedAccount,
   } as LoginResponse;
 }
+
+export function logout() {
+  localStorage.removeItem("account");
+  localStorage.removeItem("isAdmin");
+}
+
+export type Dashboard = {
+  bid?: string;
+  commission?: number;
+  address?: string;
+};
+
+export async function getDashboard(): Promise<Dashboard> {
+  const contract = getContract();
+  const address = (await contract.methods
+    .getImplementationAddress()
+    .call()) as string;
+
+  if (/^(0x0+)+$/.test(address)) {
+    return {
+      bid: "10000000000000000", // 0.01 ether em wei
+      commission: 10,
+      address,
+    } as Dashboard;
+  }
+
+  const bid = await contract.methods.getBid().call();
+  const commission = await contract.methods.getCommission().call();
+
+  return {
+    bid,
+    commission,
+    address,
+  } as Dashboard;
+}
+
+export async function setContract(address: string): Promise<string> {
+  const contract = getContract();
+  const tx = await contract.methods.setJoKenPo(address).send();
+  return tx.transactionHash;
+}
+
+export async function setCommission(commission: number): Promise<string> {
+  const contract = getContract();
+  const tx = await contract.methods.setCommission(commission).send();
+  return tx.transactionHash;
+}
+
+export async function setBid(bid: string): Promise<string> {
+  const contract = getContract();
+  const tx = await contract.methods.setBid(bid).send();
+  return tx.transactionHash;
+}
