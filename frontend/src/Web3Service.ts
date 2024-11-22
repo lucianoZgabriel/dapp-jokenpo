@@ -95,3 +95,56 @@ export async function setBid(bid: string): Promise<string> {
   const tx = await contract.methods.setBid(bid).send();
   return tx.transactionHash;
 }
+
+export type Player = {
+  wallet: string;
+  wins: number;
+};
+
+export type Leaderboard = {
+  players?: Player[];
+  result?: string;
+};
+
+export enum Options {
+  NONE = 0,
+  ROCK = 1,
+  PAPER = 2,
+  SCISSORS = 3,
+}
+
+export async function play(option: Options): Promise<string> {
+  const web3 = getWeb3();
+  const contract = getContract(web3);
+  const bid = (await contract.methods.getBid().call()) as string;
+  const tx = await contract.methods.play(option).send({
+    value: bid,
+  });
+  return tx.transactionHash;
+}
+
+export async function getResult(): Promise<string> {
+  const contract = getContract();
+  return await contract.methods.getResult().call();
+}
+
+export async function getLeaderboard(): Promise<Leaderboard> {
+  const contract = getContract();
+  const players = await contract.methods.getLeaderboard().call();
+  const result = await contract.methods.getResult().call();
+  return { players, result } as Leaderboard;
+}
+
+export function getBestPlayers(): Promise<Player[]> {
+  const contract = getContract();
+  return contract.methods.getLeaderboard().call();
+}
+
+export function listenEvent(callback: Function) {
+  const web3 = new Web3(`${process.env.REACT_APP_WEBSOCKET_URL}`);
+  const contract = getContract(web3);
+
+  contract.events
+    .Played({ fromBlock: "latest" })
+    .on("data", (event: any) => callback(event.returnValues.result));
+}
