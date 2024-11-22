@@ -2,8 +2,11 @@
 
 A Rock, Paper, Scissors (JoKenPo) game implemented on the BSC Testnet. Players can compete by betting BNB, with the winner taking the prize.
 
+🎮 **[Play Now: dapp-jokenpo.vercel.app](https://dapp-jokenpo.vercel.app)**
+
 ## 📋 Table of Contents
 
+- [Quick Start](#-quick-start)
 - [How to Play](#-how-to-play)
 - [Running Locally](#-running-locally)
   - [Prerequisites](#prerequisites)
@@ -13,6 +16,18 @@ A Rock, Paper, Scissors (JoKenPo) game implemented on the BSC Testnet. Players c
 - [Interacting with the Game](#-interacting-with-the-game)
 - [Contributing](#-contributing)
 - [License](#-license)
+
+## 🚀 Quick Start
+
+1. **Get Test BNB**
+   - Join the [BNB Chain Discord](https://discord.com/invite/bnbchain)
+   - Get test tokens from the [BNB Testnet Faucet](https://www.bnbchain.org/en/testnet-faucet)
+   - The Discord faucet is the fastest way to get test tokens
+
+2. **Play the Game**
+   - Visit [dapp-jokenpo.vercel.app](https://dapp-jokenpo.vercel.app)
+   - Connect your MetaMask wallet
+   - Choose your move and place your bet!
 
 ## 🎮 How to Play
 
@@ -88,9 +103,9 @@ The project consists of:
    - Block Explorer URL: https://testnet.bscscan.com
 
 2. Get test BNB:
-   - Visit a BSC Testnet faucet
-   - Paste your wallet address
-   - Request test tokens
+   - Join the [BNB Chain Discord](https://discord.com/invite/bnbchain)
+   - Visit the [BNB Testnet Faucet](https://www.bnbchain.org/en/testnet-faucet)
+   - Request test tokens through Discord (recommended method)
 
 ## 📱 Interacting with the Game
 
