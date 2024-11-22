@@ -2,6 +2,18 @@
 
 A Rock, Paper, Scissors (JoKenPo) game implemented on the BSC Testnet. Players can compete by betting BNB, with the winner taking the prize.
 
+## 📋 Table of Contents
+
+- [How to Play](#-how-to-play)
+- [Running Locally](#-running-locally)
+  - [Prerequisites](#prerequisites)
+  - [Environment Setup](#environment-setup)
+  - [Project Structure](#project-structure)
+- [Wallet Configuration](#-wallet-configuration)
+- [Interacting with the Game](#-interacting-with-the-game)
+- [Contributing](#-contributing)
+- [License](#-license)
+
 ## 🎮 How to Play
 
 1. **Connect Your Wallet**
