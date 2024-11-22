@@ -14,7 +14,9 @@ interface IJoKenPo {
 
     function getResult() external view returns (string memory);
 
-    function play(JKPLibrary.Options newChoice) external payable;
+    function play(
+        JKPLibrary.Options newChoice
+    ) external payable returns (string memory);
 
     function getLeaderboard()
         external

@@ -73,7 +73,9 @@ contract JoKenPo is IJoKenPo {
         choice1 = JKPLibrary.Options.NONE;
     }
 
-    function play(JKPLibrary.Options newChoice) external payable {
+    function play(
+        JKPLibrary.Options newChoice
+    ) external payable returns (string memory) {
         require(tx.origin != owner, "Owner can not play");
         require(
             newChoice != JKPLibrary.Options.NONE,
@@ -121,6 +123,7 @@ contract JoKenPo is IJoKenPo {
             player1 = address(0);
             choice1 = JKPLibrary.Options.NONE;
         }
+        return result;
     }
 
     function getLeaderboard()
